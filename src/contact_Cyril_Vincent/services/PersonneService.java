@@ -19,4 +19,8 @@ public class PersonneService {
 	public List<Personne> afficherContacts(){
 		return dao.getAllPersonne();
 	}
+	
+	public Personne getPersonneById(long id) {
+		return dao.getPersonById(id);
+	}
 }

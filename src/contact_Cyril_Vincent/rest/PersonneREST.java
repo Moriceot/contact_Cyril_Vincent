@@ -30,7 +30,15 @@ public class PersonneREST {
 	@POST
 	@Path("/newcontact/{p}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void save(Personne p) {
+	public void save(@PathParam("p")Personne p) {
 		serv.ajoutPersonne(p);
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/byid/{id}")
+	public Personne getPersonneById(@PathParam("id")long id) {
+		return serv.getPersonneById(id);
+	};
+	
 }

@@ -41,9 +41,8 @@ public class ServletNouveauContact extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Dans la servlet");
 		
-		RequestDispatcher dispatcher=request.getRequestDispatcher("listecontact.jsp");
+		RequestDispatcher dispatcher=request.getRequestDispatcher("ServletListeClient");
 		
 		
 		String nom=request.getParameter("Nom");
@@ -51,11 +50,10 @@ public class ServletNouveauContact extends HttpServlet {
 		String civilite=request.getParameter("Civilite");
 		
 		Personne p=new Personne(civilite, nom, prenom);
-		System.out.println(p);
 		
-		System.out.println("ok");
-		response.sendRedirect("/index.html");
-		
+		serv.ajoutPersonne(p);
+	
+		dispatcher.forward(request, response);
 		
 	}
 

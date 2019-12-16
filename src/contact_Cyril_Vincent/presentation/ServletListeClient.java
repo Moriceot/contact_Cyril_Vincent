@@ -35,24 +35,20 @@ public class ServletListeClient extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Dans la servlet");
 		
 		
 		RequestDispatcher dispatcher=request.getRequestDispatcher("listecontact.jsp");
 		
 		
 		List<Personne> listeContact=new ArrayList<Personne>();
-		System.out.println("avant afficahge contact");
 		listeContact=serv.afficherContacts();
-		System.out.println("après afficahge contact");
 		
 		request.setAttribute("liste", listeContact);
 	

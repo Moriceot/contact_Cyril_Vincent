@@ -21,6 +21,10 @@ public class PersonneDAO {
 		return em.createNamedQuery("Personne.all",Personne.class).getResultList();
 	}
 	
+	public Personne getPersonById(long id) {
+		return em.find(Personne.class, id);
+	}
+	
 	
 
 }

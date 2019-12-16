@@ -4,15 +4,20 @@ import java.io.Serializable;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.jboss.resteasy.spi.touri.MappedBy;
 
 @Entity
 @Table(name = "adresses")
 @Access(AccessType.FIELD)
+
 public class Adresse implements Serializable{
 	//Attributs********************************************
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +26,8 @@ public class Adresse implements Serializable{
 	private String cp;
 	private String ville;
 	private String pays;
+	
+//	private Personne personne;
 	
 	
 	//Constructeurs*****************************************************

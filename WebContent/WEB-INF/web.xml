@@ -3,6 +3,6 @@
   <display-name>contact_Cyril_Vincent</display-name>
   
   <welcome-file-list>
-    <welcome-file>NewFile.html</welcome-file>
+    <welcome-file>ServletListeClient</welcome-file>
   </welcome-file-list>
 </web-app>

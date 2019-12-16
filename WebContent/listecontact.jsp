@@ -10,15 +10,17 @@
 	</head>
 	<body>
 		<h1>Liste des contacts</h1>
-		
+		<form action="nouveaucontact.html">
+			<input type="submit" value="Nouveau Contact"/>
+		</form>
 		<table>
 			<tr>
-				<th>Nom</th><th>Prenom</th><th>Civilite</th>
+				<th>id</th><th>Civilite</th><th>Prenom</th><th>Nom</th>
 			</tr>
 			
 			<c:forEach var="liste" items="${liste}">
 			<tr>
-				<td>${liste.id}</td><td>${liste.civilite}</td><td>${liste.nom}</td><td>${liste.prenom}</td>
+				<td>${liste.id}</td><td>${liste.civilite}</td><td>${liste.nom}</td><td>${liste.prenom}</td><td><button>Supprimer</button><button>Modifier</button></td>
 			</tr>
 			</c:forEach>
 			

@@ -21,6 +21,8 @@ import javax.persistence.Table;
 @Access(AccessType.FIELD)
 @NamedQuery(name = "Personne.all",
 			query = "SELECT p FROM Personne p")
+//@NamedQuery(name = "Personne.all",
+//			query = "SELECT p.pk, p.nom,p.prenom,p.civilite,a.rue, a.cp, a.ville, a.pays FROM Personne p, Adresse a WHERE p.pk=a.fk")
 public class Personne implements Serializable {
 	//Attributs********************************
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
