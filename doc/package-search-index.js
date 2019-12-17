@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"contact_Cyril_Vincent.entites"},{"l":"contact_Cyril_Vincent.persistence"},{"l":"contact_Cyril_Vincent.presentation"},{"l":"contact_Cyril_Vincent.rest"},{"l":"contact_Cyril_Vincent.services"},{"l":"contact_Cyril_Vincent.tests"}]

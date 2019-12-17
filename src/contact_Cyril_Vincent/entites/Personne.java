@@ -1,12 +1,14 @@
 package contact_Cyril_Vincent.entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,35 +16,42 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+/**
+ * Classe entité contenant tous les attributs correspondants à une personne
+ * @author Cyril Mailhé et Vincent Bourgueil
+ */
 
 @Entity
 @Table(name = "personnes")
 @Access(AccessType.FIELD)
 @NamedQuery(name = "Personne.all",
 			query = "SELECT p FROM Personne p")
-//@NamedQuery(name = "Personne.all",
-//			query = "SELECT p.pk, p.nom,p.prenom,p.civilite,a.rue, a.cp, a.ville, a.pays FROM Personne p, Adresse a WHERE p.pk=a.fk")
 public class Personne implements Serializable {
-	//Attributs********************************
+	
+	//Atributs****************************************************************
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long pk;
 	private String civilite;
 	private String nom;
 	private String prenom;
-	@ManyToMany(cascade = CascadeType.PERSIST) 
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER) 
 	@JoinTable(name = "contacts_adresses",
-	joinColumns = @JoinColumn(name="fk_personne"),
-	inverseJoinColumns = @JoinColumn(name="fk_adresse"))
-	private List<Adresse> adresse;
+	joinColumns = @JoinColumn(name="fk_adresse"),
+	inverseJoinColumns = @JoinColumn(name="fk_personne"))
+	private Adresse adresse;
+	
 	
 	//Constructeurs********************************************************
-	public Personne(String civilite, String nom, String prenom) {
+	public Personne(String civilite, String nom, String prenom, Adresse a) {
 		super();
 		
 		this.civilite = civilite;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.adresse=a;
 	}
 	public Personne() {
 		super();
@@ -98,6 +107,30 @@ public class Personne implements Serializable {
 		this.prenom = prenom;
 	}
 	
-	
+	/**
+	 * @return the adresse
+	 */
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	/**
+	 * @return the pk
+	 */
+	public long getPk() {
+		return pk;
+	}
+	/**
+	 * @param pk the pk to set
+	 */
+	public void setPk(long pk) {
+		this.pk = pk;
+	}
 
+	
 }

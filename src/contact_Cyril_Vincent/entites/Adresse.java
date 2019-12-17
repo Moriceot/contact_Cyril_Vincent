@@ -1,10 +1,12 @@
 package contact_Cyril_Vincent.entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.jboss.resteasy.spi.touri.MappedBy;
 
+/**
+ *Classe entité contenant tous les attributs correspondants à une adresse
+ *@author Cyril Mailhé et Vincent Bourgueil 
+ */
 @Entity
 @Table(name = "adresses")
 @Access(AccessType.FIELD)
@@ -21,13 +26,14 @@ import org.jboss.resteasy.spi.touri.MappedBy;
 public class Adresse implements Serializable{
 	//Attributs********************************************
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long pk;
 	private String rue;
+	@Column(name = "code_postal")
 	private String cp;
 	private String ville;
 	private String pays;
 	
-//	private Personne personne;
+
 	
 	
 	//Constructeurs*****************************************************
@@ -40,6 +46,10 @@ public class Adresse implements Serializable{
 	}
 	public Adresse() {
 		super();
+		this.rue = "rue";
+		this.cp = "cp";
+		this.ville ="ville";
+		this.pays = "pays";
 	}
 	
 	
@@ -95,14 +105,14 @@ public class Adresse implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public long getId() {
-		return id;
+	public long getPk() {
+		return pk;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
-		this.id = id;
+	public void setPk(long pk) {
+		this.pk = pk;
 	}
 	
 
